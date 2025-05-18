@@ -1,6 +1,8 @@
 [![codecov](https://codecov.io/gh/SNComputerGuru/MyCounter/graph/badge.svg?token=RVBEBEM3SD)](https://codecov.io/gh/SNComputerGuru/MyCounter)
 # MyCounter
 =======
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
