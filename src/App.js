@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Counter from './Counter';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const increment = () => setCount((c) => c + 1);
+  const decrement = () => setCount((c) => c - 1);
+  const reset = () => setCount(0);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Simple Counter</h1>
+      <Counter count={count} />
+      <div className="buttons">
+        <button onClick={increment} data-testid="inc-btn">+</button>
+        <button onClick={decrement} data-testid="dec-btn">-</button>
+        <button onClick={reset} data-testid="reset-btn">Reset</button>
+      </div>
     </div>
   );
 }
