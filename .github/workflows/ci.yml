@@ -1,32 +1,29 @@
-name: CI
+name: Run tests and upload coverage
 
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+on: 
+  push
 
 jobs:
-  build-and-test:
+  test:
+    name: Run tests and collect coverage
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
         with:
-          node-version: 18  # Change to match your project
+          fetch-depth: 2
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests with coverage
-        run: npm test -- --coverage
+      - name: Run tests
+        run: npx jest --coverage
 
-      - name: Upload coverage reports to Codecov
+      - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}  # Only needed for private repos
+          token: ${{ secrets.CODECOV_TOKEN }}
           slug: SNComputerGuru/MyCounter
